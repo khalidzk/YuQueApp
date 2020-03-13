@@ -65,7 +65,7 @@
 
         $api.byId('sys-info').innerHTML = str;
 console.log("skkkkk");
-        $api.yqget($api.getStorage('yuqueNamespace')+'/docs',function(ret){
+        $api.yqget($api.loadSecureValue('yuqueNamespace')+'/docs',function(ret){
           alert(ret);
         },'text');
 

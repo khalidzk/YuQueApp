@@ -587,7 +587,7 @@
         var argsToJson = parseArguments.apply(null, arguments);
         var json = {};
         var fnSuc = argsToJson.fnSuc;
-        argsToJson.url && (json.url = $api.getStorage("yuqueUrl")+argsToJson.url);
+        argsToJson.url && (json.url = api.loadSecureValue("yuqueUrl")+argsToJson.url);
         //argsToJson.data && (json.data = argsToJson.data);
         if(argsToJson.dataType){
             var type = argsToJson.dataType.toLowerCase();
@@ -598,10 +598,10 @@
             json.dataType = 'text';
         }
         json.method = 'get';
-        alert($api.getStorage('yuqueUrl'));
-        console.log($api.getStorage('yuqueToken'));
-        console.log($api.getStorage('appEnglishName'));
-        json.headers={'Content-Type':'application/json','User-Agent': $api.getStorage('appEnglishName'), 'X-Auth-Token': $api.getStorage('yuqueToken')},
+        alert(api.loadSecureValue('yuqueUrl'));
+        console.log(api.loadSecureValue('yuqueToken'));
+        console.log(api.loadSecureValue('appEnglishName'));
+        json.headers={'Content-Type':'application/json','User-Agent': api.loadSecureValue('appEnglishName'), 'X-Auth-Token': api.loadSecureValue('yuqueToken')},
         api.ajax(json,
             function(ret,err){
                 if (ret) {
