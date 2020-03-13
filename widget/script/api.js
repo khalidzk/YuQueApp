@@ -213,7 +213,7 @@
 
             return mark;
         }
-        
+
     };
     u.remove = function(el){
         if(el && el.parentNode){
@@ -331,7 +331,7 @@
                     break;
             }
         }
-        
+
     };
     u.prepend = function(el, html){
         if(!u.isElement(el)){
@@ -582,10 +582,35 @@
     };
 
 /*end*/
-    
+
+    u.yqget = function(/*url,fnSuc,dataType*/){
+        var argsToJson = parseArguments.apply(null, arguments);
+        var json = {};
+        var fnSuc = argsToJson.fnSuc;
+        argsToJson.url && (json.url = $api.getStorage("yuqueUrl")+argsToJson.url);
+        //argsToJson.data && (json.data = argsToJson.data);
+        if(argsToJson.dataType){
+            var type = argsToJson.dataType.toLowerCase();
+            if (type == 'text'||type == 'json') {
+                json.dataType = type;
+            }
+        }else{
+            json.dataType = 'text';
+        }
+        json.method = 'get';
+        alert($api.getStorage('yuqueUrl'));
+        console.log($api.getStorage('yuqueToken'));
+        console.log($api.getStorage('appEnglishName'));
+        json.headers={'Content-Type':'application/json','User-Agent': $api.getStorage('appEnglishName'), 'X-Auth-Token': $api.getStorage('yuqueToken')},
+        api.ajax(json,
+            function(ret,err){
+                if (ret) {
+                    fnSuc && fnSuc(ret);
+                }
+            }
+        );
+    };
 
     window.$api = u;
 
 })(window);
-
-
