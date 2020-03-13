@@ -2,6 +2,5 @@
 <security>
   <item name="appEnglishName" value="YuQueApp"/>
   <item name="yuqueToken" value="gcG0OmaHTHF2CTaUhQYHSzIHB2H741T9UvBAH4j0"/>
-  <item name="yuqueUrl" value="https://www.yuque.com/api/v2"/>
   <item name="yuqueNamespace" value="/khalid/khalid"/>
 </security>

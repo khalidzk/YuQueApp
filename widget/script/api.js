@@ -587,21 +587,15 @@
         var argsToJson = parseArguments.apply(null, arguments);
         var json = {};
         var fnSuc = argsToJson.fnSuc;
-        argsToJson.url && (json.url = api.loadSecureValue("yuqueUrl")+argsToJson.url);
-        //argsToJson.data && (json.data = argsToJson.data);
-        if(argsToJson.dataType){
-            var type = argsToJson.dataType.toLowerCase();
-            if (type == 'text'||type == 'json') {
-                json.dataType = type;
-            }
-        }else{
-            json.dataType = 'text';
-        }
+        argsToJson.url && (json.url = "https://www.yuque.com/api/v2"+argsToJson.url);
+        json.dataType = 'json';
         json.method = 'get';
-        alert(api.loadSecureValue('yuqueUrl'));
-        console.log(api.loadSecureValue('yuqueToken'));
-        console.log(api.loadSecureValue('appEnglishName'));
-        json.headers={'Content-Type':'application/json','User-Agent': api.loadSecureValue('appEnglishName'), 'X-Auth-Token': api.loadSecureValue('yuqueToken')},
+        json.headers = {
+          'Content-Type':'application/json',
+          'User-Agent': "YuQueApp",
+          'X-Auth-Token': "gcG0OmaHTHF2CTaUhQYHSzIHB2H741T9UvBAH4j0"
+        };
+        console.log(JSON.stringify(json));
         api.ajax(json,
             function(ret,err){
                 if (ret) {
